@@ -1,226 +1,436 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Giordana | Dev Full Stack</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto:wght@100&family=Lato:wght@300&family=Nunito:wght@200&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://unpkg.com/scrollreveal"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Giordana - Portfólio Profissional</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<style>
+    body {
+        font-family: 'Space Mono', monospace;
+        background: #0a001f;
+        background-image: radial-gradient(circle at top left, #ff77a9, transparent 40%),
+                          radial-gradient(circle at bottom right, #ff4da6, transparent 40%);
+        color: #f8c1de;
+        overflow-x: hidden;
+    }
+    .orbitron {
+        font-family: 'Orbitron', sans-serif;
+    }
+    /* Navegação */
+    nav {
+        backdrop-filter: blur(12px);
+        background: rgba(20, 0, 30, 0.7);
+        border-bottom: 1px solid #ff4da6;
+        z-index: 50;
+    }
+    nav a {
+        color: #f8c1de;
+        transition: color 0.3s ease;
+        font-family: 'Space Mono', monospace;
+    }
+    nav a:hover {
+        color: #ff77a9;
+    }
+    nav .logo-text {
+        color: #ff4da6;
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
+    nav button svg {
+        stroke: #f8c1de;
+    }
+    /* Estrelas */
+    .star {
+        position: absolute;
+        background-color: #ff77a9;
+        border-radius: 50%;
+        animation: twinkle 4s infinite ease-in-out;
+    }
+    @keyframes twinkle {
+        0%, 100% {opacity: 0.3;}
+        50% {opacity: 1;}
+    }
+    /* Hero */
+    .hero-section h1 .text-gradient {
+        background: linear-gradient(90deg, #ff77a9 0%, #ff4da6 100%);
+        -webkit-background-clip: text;
+        color: transparent;
+        font-weight: 700;
+    }
+    .hero-section p {
+        color: #ffb6d9;
+        font-size: 1.125rem;
+    }
+    .btn-primary {
+        background: linear-gradient(45deg, #ff4da6, #ff77a9);
+        color: white;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-align: center;
+    }
+    .btn-primary:hover {
+        filter: brightness(1.1);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255, 77, 166, 0.6);
+    }
+    .btn-secondary {
+        border: 2px solid #ff77a9;
+        color: #ff77a9;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-align: center;
+    }
+    .btn-secondary:hover {
+        background: #ff77a9;
+        color: white;
+        box-shadow: 0 8px 20px rgba(255, 77, 166, 0.6);
+    }
+    /* Cards dos projetos e serviços */
+    .card {
+        background: rgba(255, 77, 166, 0.12);
+        border: 1px solid #ff4da6;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        color: #ffd6e8;
+        box-shadow: 0 0 15px rgba(255, 77, 166, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(255, 77, 166, 0.6);
+    }
+    .card h3 {
+        font-family: 'Orbitron', sans-serif;
+        font-weight: 700;
+        color: #ff4da6;
+        margin-bottom: 0.5rem;
+    }
+    .card p {
+        color: #ffc9e3;
+    }
+    .card a {
+        color: #ff77a9;
+        font-weight: 600;
+        text-decoration: none;
+        display: block;
+        margin-top: 0.8rem;
+        text-align: center;
+        transition: color 0.3s ease;
+    }
+    .card a:hover {
+        color: #ffb6d9;
+        text-decoration: underline;
+    }
+    /* Imagens circulares */
+    .card img {
+        border-radius: 50%;
+        box-shadow: 0 0 15px rgba(255, 77, 166, 0.7);
+        margin-bottom: 1rem;
+    }
+    /* Seções */
+    section {
+        padding: 4rem 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    /* Iluminação habilidades e experiência */
+    #skills, #experience {
+        background: #1a002e;
+        box-shadow: 0 0 40px 4px rgba(255, 77, 166, 0.7);
+        border-radius: 1rem;
+        color: #ffe6f0;
+    }
+    #skills h2, #experience h2 {
+        color: #ff4da6;
+        text-shadow: 0 0 10px #ff77a9;
+    }
+    /* Listas */
+    ul {
+        list-style-type: disc;
+        padding-left: 1.25rem;
+        color: #fbb6ce;
+    }
+    ul li {
+        margin-bottom: 0.4rem;
+    }
+    /* Contato */
+    #contact i {
+        color: #ff77a9;
+        transition: color 0.3s ease;
+    }
+    #contact a:hover i {
+        color: #ffb6d9;
+        transform: scale(1.15);
+    }
+    /* Responsive ajustes */
+    @media (max-width: 768px) {
+        nav .hidden.md\\:flex {
+            display: none !important;
+        }
+    }
 
+    /* Globo rosa neon animado */
+.planet {
+    animation: rotate 20s linear infinite;
+    filter: drop-shadow(0 0 10px #ff4da6);
+    max-width: 100%;
+}
+
+.orbit {
+    stroke-dasharray: 502;
+    stroke-dashoffset: 502;
+    animation: dash 5s linear infinite;
+    opacity: 0.6;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+}
+
+@keyframes dash {
+    0% { stroke-dashoffset: 502; }
+    50% { stroke-dashoffset: 251; opacity: 1;}
+    100% { stroke-dashoffset: 0; opacity: 0.6;}
+}
+
+</style>
 </head>
-  
 <body>
-  <header class="glow">
-    <div class="logo">
-      <h1><i class="fas fa-terminal"></i> Giordana.dev</h1>
-      <button id="menu-toggle" class="menu-toggle">
-        <i class="fas fa-bars"></i>
-      </button>
-  
-      <nav id="nav-menu">
-        <a href="#sobre"><i class="fas fa-user"></i> Sobre mim</a>
-        <a href="#skills"><i class="fas fa-code"></i> Skills</a>
-        <a href="#projetos"><i class="fas fa-laptop-code"></i> Projetos</a>
-        <a href="#contato"><i class="fas fa-envelope-open-text"></i> Fale comigo!</a>
-      </nav>
-    </header>
 
-  <div class="hero-container">
-    <div class="hero-left">
-      <div class="hero-text">
-        <p class="hello">Hello World! ✨</p>
-        <h1 class="glow-text">Eu sou Giordana</h1>
-        <p class="subtitle">Desenvolvedora Full Stack.</p>
-        <a href="#contato" class="contact-btn">Fale comigo</a>
+<!-- Estrelas no fundo -->
+<div id="stars-container"></div>
+
+<!-- Navegação -->
+<nav class="fixed w-full z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      <div class="flex items-center space-x-2">
+        <div class="h-10 w-10 rounded-full overflow-hidden border border-pink-400">
+          
+        </div>
+        <span class="logo-text orbitron">Dev gio</span>
       </div>
-    </div>
-    <div class="hero-right">
-      <img src="Design sem nome.png" alt="Giordana" class="hero-image">
+      <div class="hidden md:flex space-x-8">
+        <a href="#projects">Projetos</a>
+        <a href="#skills">Habilidades</a>
+        <a href="#contact">Contato</a>
+        <a href="#services">Serviços</a>
+        <a href="#experience">Experiência</a>
+        <a href="#certificates">Certificações</a>
+      </div>
+      <button class="md:hidden focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
     </div>
   </div>
-
-  <section id="sobre" style="padding: 4rem 2rem;">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap;">
-      <div style="flex: 1; min-width: 280px; text-align: center;">
-        <img src="atual.jpg" alt="Foto da Giordana" style="width: 100%; max-width: 300px; border-radius: 12px; box-shadow: 0 0 15px #ff69b4;">
-      </div>
-      <div style="flex: 2; min-width: 300px;">
-        <h3 style="font-size: 2.5rem; color: #ff69b4; margin-bottom: 1rem;"> Sobre Mim</h3>
-        <p style="font-size: 1.3rem; line-height: 1.8; color: #eee;">
-          Olá! Meu nome é <strong style="color: #ff85c1;">Giordana</strong> e sou uma <strong style="color: #ff85c1;">Desenvolvedora Full Stack e estudante de TI em formação</strong> <br><br>
-          Tenho experiência no desenvolvimento de interfaces modernas e funcionais com <strong>HTML, CSS, JavaScript e Qt Designer</strong>, além de trabalhar com <strong>Python, Java, MySQL e Programação Orientada a Objetos</strong> no backend, <strong>manutenção de hardware</strong>, o que amplia minha atuação em diversos projetos.<br><br>
-          Busco sempre entregar soluções completas, da estrutura ao design final, com cuidado. 
-        </p>
+</nav>
+<!-- Hero Section -->
+<section id="home" class="hero-section pt-40 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <!-- Texto da esquerda -->
+    <div class="space-y-6">
+      <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+        <span class="text-gradient orbitron">Desenvolvedora</span><br />
+        <span class="text-white orbitron">Explorando o Cosmos Digital</span>
+      </h1>
+      <p class="text-lg max-w-lg">
+        Criando sistemas como constelações — cada linha de código é uma estrela no universo da tecnologia.
+      </p>
+      <div class="flex space-x-4">
+        <a href="#projects" class="btn-primary">Explorar Projetos</a>
+        <a href="https://wa.me/554999527071" target="_blank" rel="noopener noreferrer" class="btn-secondary">Enviar Mensagem</a>
       </div>
     </div>
-  </section>
 
-  <section id="oque-e-fullstack" class="fullstack-sessao">
-    <div class="fullstack-conteudo">
-      <div class="icone-flutuante"><i class="fas fa-layer-group"></i></div>
-      <h3>O que é um Desenvolvedor Full Stack?</h3>
+    <!-- Imagem da direita -->
+    <div class="flex justify-center md:justify-end">
+      <img src="Design sem nome (1).png"Imagem de desenvolvedora galáctica" class="w-full max-w-sm rounded-2xl shadow-lg" />
+    </div>
+  </div>
+</section>
+
+
+<!-- Sobre Giordana -->
+<section id="about" class="py-20 max-w-4xl mx-auto px-4 text-center">
+  <h2 class="text-5xl font-bold mb-6 orbitron text-gradient">SOBRE GIODRANA</h2>
+  <p class="text-lg text-pink-300 max-w-3xl mx-auto">
+    Desenvolvedora Full Stack e Técnica em Informática. Olá! Meu nome é Giordana. Tenho experiência no desenvolvimento de interfaces modernas com HTML, CSS, JavaScript e Qt Designer, e também trabalho no backend com Python, Java, MySQL e Programação Orientada a Objetos (POO). Além disso, atuo com manutenção de hardware, o que amplia minha atuação em projetos variados.
+  </p>
+</section>
+
+<!-- Projetos -->
+<section id="projects">
+  <h2 class="text-4xl font-bold mb-12 text-center orbitron">PROJETOS</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 max-w-7xl mx-auto">
+    <!-- Virtual Pedalboard -->
+    <div class="card text-center">
+      <img src="Salleedesign-Music-Guitar-stratocaster-black.256.png" alt="Pedaleira Virtual" class="w-32 h-32 mx-auto" />
+      <h3>Pedaleira Virtual para Guitarras</h3>
+      <p>Simulação de pedais para guitarra usando Python + Qt Designer</p>
+      <a href="https://github.com/gio0000/Pedaleira-para-guitarra" target="_blank" rel="noopener noreferrer">🔗 Ver no GitHub</a>
+    </div>
+    <!-- Guitar Sales Site -->
+    <div class="card text-center">
+      <img src="AI.png" alt="Site de Venda de Guitarras" class="w-32 h-32 mx-auto" />
+      <h3>Site de Venda de Guitarras</h3>
+      <p>Projeto web moderno com foco em e-commerce para guitarristas</p>
+      <a href="https://github.com/gio0000/ecommerce-guitarras" target="_blank" rel="noopener noreferrer">🔗 Ver no GitHub</a>
+    </div>
+    <!-- Agronomy Site -->
+    <div class="card text-center">
+      <img src="Microsoft-Fluentui-Emoji-3d-Potted-Plant-3d.512.png" alt="Site de Agronomia" class="w-32 h-32 mx-auto" />
+      <h3>Site de Agronomia</h3>
+      <p>Plataforma voltada para serviços e conteúdos agrícolas</p>
+      <a href="https://github.com/gio0000/site-agroneg-cios" target="_blank" rel="noopener noreferrer">🔗 Ver no GitHub</a>
+    </div>
+    <!-- Manutenção de Computadores -->
+    <div class="card text-center">
+      <img src="Prasilarts-Claire-Monitor-06-Computer-Windows-7.512.png" alt="Manutenção de Computadores" class="w-32 h-32 mx-auto" />
+      <h3>Manutenção de Computadores</h3>
+      <p>Projeto voltado para suporte técnico e manutenção preventiva</p>
+      <a href="https://www.linkedin.com/posts/giordana-stumm-13786133a_projeto-integrador-activity-7335079937172779008-zHq5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFUzLXsBEgwMoF5ADCCX3xxZHtSqtf4yuQ0" target="_blank" rel="noopener noreferrer">🔗 Ver no LinkedIn</a>
+    </div>
+    <!-- Portfólio Atual -->
+    <div class="card text-center">
+      <img src="Aha-Soft-Space-Galaxy.256.png" alt="Portfólio Atual" class="w-32 h-32 mx-auto" />
+      <h3>Este Portfólio</h3>
+      <p>Portfólio desenvolvido para mostrar meus projetos</p>
+    </div>
+  </div>
+</section>
+
+<!-- Serviços -->
+<section id="services" class="py-20">
+  <h2 class="text-4xl font-bold mb-8 text-center orbitron">SERVIÇOS CONTRATÁVEIS</h2>
+  <p class="text-lg text-center max-w-3xl mx-auto mb-12 text-pink-300">
+    Ofereço uma variedade de serviços para atender às suas necessidades tecnológicas.
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 max-w-7xl mx-auto">
+    <div class="card">
+      <h3>Criação de Sites Pessoais</h3>
       <p>
-        Desenvolvedor Full Stack</strong> é um profissional que domina tanto o desenvolvimento <strong>frontend</strong> (o visual e interação com o usuário) quanto o <strong>backend</strong> (as regras de negócio, bancos de dados e lógica por trás do sistema).<br><br>
-      Isso significa que sou capaz de criar soluções completas: desde a estrutura do site ou aplicativo, até o design moderno e funcional, com foco na experiência do usuário. Também cuido da segurança, integração com bancos de dados, performance e manutenção da aplicação. 💻🛠️<br><br>
-      Em resumo, contratar uma desenvolvedora full stack é ter em mãos alguém que entrega o projeto inteiro com qualidade e agilidade. 🚀
+        Crio sites personalizados para pequenas empresas e empreendedores que buscam presença online com visual profissional. Cada site é feito pensando nas necessidades do cliente, com design moderno, funcional e alinhado à identidade da marca. Os sites têm design responsivo, funcionando bem em celulares, tablets e computadores, oferecendo ótima navegação em qualquer tela. Perfeito para apresentar serviços, divulgar sua marca ou vender produtos de forma simples e bonita.
       </p>
     </div>
-  </section>
-
-  <section id="skills">
-    <h3>🚀 Hard & Soft Skills</h3>
-    <div class="grid">
-      <div class="card glow">
-        <h4>Frontend</h4>
-        <ul style="list-style: none; padding: 0;">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>Qt Designer</li>
-        </ul>
-      </div>
-      <div class="card glow">
-        <h4>Backend</h4>
-        <ul style="list-style: none; padding: 0;">
-          <li>Python</li>
-          <li>Java</li>
-          <li>MySQL</li>
-          <li>POO (Programação Orientada a Objetos)</li>
-        </ul>
-      </div>
-      <div class="card glow">
-        <h4>Outros</h4>
-        <ul style="list-style: none; padding: 0;">
-          <li>GitHub</li>
-          <li>Manutenção de Hardware</li>
-          <li>Redes de Computadores</li>
-          <li>Nível de inglês B2 (BrE e AmE)</li>
-          
-          
-        </ul>
-      </div>
+    <div class="card">
+      <h3>Manutenção de Computadores</h3>
+      <p>
+        Serviços de manutenção de hardware, incluindo formatação, upgrade, instalação de softwares, diagnósticos e backup de dados.
+      </p>
+      <ul>
+        <li>Formatação e instalação de sistemas operacionais</li>
+        <li>Upgrade de hardware</li>
+        <li>Substituição de hardware</li>
+        <li>Instalação de softwares</li>
+        <li>Diagnósticos de problemas</li>
+        <li>Backup de dados</li>
+        <li>Manutenções preventivas</li>
+        <li>Limpeza interna e montagem de PCs</li>
+        <li>Escolha de peças para montagem</li>
+      </ul>
     </div>
-  </section>
-
-  <section id="servicos">
-    <h3>🛠 Serviços Contratáveis</h3>
-    <div class="grid">
-      <div class="card glow">
-        <h4>Criação de Sites</h4>
-        <p>Desenvolvimento de sites personalizados para empresas, portfólios e pequenos negócios.</p>
-      </div>
-      <div class="card glow">
-        <h4>Manutenção de Computadores</h4>
-        <p>Formatação, upgrades, instalação de softwares, diagnósticos e manutenção preventiva e corretiva.</p>
-      </div>
+    <div class="card">
+      <h3>Criação de Apps e Portfólios</h3>
+      <p>
+        Desenvolvo aplicativos e portfólios sob medida para quem quer se destacar com tecnologia e profissionalismo. Cada projeto é pensado para atender às necessidades do cliente, com visual moderno, fácil de usar e adaptado para diferentes dispositivos. Seja um app simples para facilitar processos ou um portfólio profissional para mostrar seus trabalhos, entrego soluções completas com foco em praticidade, identidade visual e funcionalidade.
+      </p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="projetos">
-    <h3>✨ Projetos</h3>
-    <div class="grid">
-      <div class="card glow projeto-card">
-        <h4>Site de Venda de Guitarras</h4>
-        <p>Projeto web moderno com foco em e-commerce para guitarristas.</p>
-        <a href="https://github.com/gio0000/Eccomerce-guitarras" target="_blank" class="github-btn">
-          <i class="fab fa-github"></i> Ver no GitHub
-        </a>
-      </div>
-      <div class="card glow projeto-card">
-        <h4>Pedaleira Digital</h4>
-        <p>Simulação de pedais para guitarra, desenvolvida em Python + Qt Designer.</p>
-        <a href="https://github.com/gio0000/Pedaleira-para-guitarra" target="_blank" class="github-btn">
-          <i class="fab fa-github"></i> Ver no GitHub
-        </a>
-      </div>
-      <div class="card glow projeto-card">
-        <h4>Site de Agronomia</h4>
-        <p>Plataforma voltada para serviços e conteúdos agrícolas.</p>
-        <a href="https://github.com/gio0000/site-agroneg-cios" target="_blank" class="github-btn">
-          <i class="fab fa-github"></i> Ver no GitHub
-        </a>
-      </div>
-      <div class="card glow projeto-card">
-        <h4>Meu Portfólio</h4>
-        <p>O presente site que desenvolvi para apresentar a mim e meus projetos e conhecimentos.</p>
-        <a href="#" target="_blank" class="github-btn">
-          <i class="fab fa-github"></i> Ver no GitHub
-        </a>
-      </div>
-      <div class="card glow projeto-card">
-        <h4>Manutenção de PCs</h4>
-        <p>Documentei de forma clara e detalhada o processo de manutenção em cinco computadores</p>
-        <a href="https://www.linkedin.com/posts/giordana-stumm-13786133a_projeto-integrador-activity-7335079937172779008-zHq5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFUzLXsBEgwMoF5ADCCX3xxZHtSqtf4yuQ0" target="_blank" class="github-btn">
-          <i class="fab fa-github"></i> Ver no linkedin
-        </a>
+<!-- Experiência -->
+<section id="experience" class="py-20 max-w-5xl mx-auto px-4 text-center">
+  <h2 class="text-4xl font-bold mb-6 orbitron">EXPERIÊNCIA</h2>
+  <p class="text-lg text-pink-300 max-w-3xl mx-auto mb-8">
+    Trabalhei em diversos projetos, desenvolvendo tanto o frontend quanto o backend, utilizando tecnologias como HTML, CSS, MySQL, Flask, Python e Java.
+  </p>
+</section>
+
+<!-- Certificações -->
+<section id="certificates" class="py-20 max-w-5xl mx-auto px-4 text-center">
+  <h2 class="text-4xl font-bold mb-6 orbitron">CERTIFICAÇÕES</h2>
+  <p class="text-lg text-pink-300 max-w-3xl mx-auto mb-8">
+    Ao longo da minha jornada, obtive formações importantes: Técnico em Informática, cursos em programação (Java, lógica, Python), Excel Avançado, Inglês B2 e manutenção de hardware.
+  </p>
+</section>
+
+<!-- Habilidades -->
+<section id="skills" class="py-20 max-w-7xl mx-auto px-4">
+  <h2 class="text-4xl font-bold mb-8 text-center orbitron">HABILIDADES</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="card">
+      <h3>Frontend</h3>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Qt Designer</li>
+      </ul>
     </div>
-  </section>
-
-  <section id="contato">
-    <h3>📫 Contato</h3>
-    <div class="contact-icons glow" style="text-align: center;">
-      <a href="mailto:giordanastumm7@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://wa.me/555499527071" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://github.com/gio0000" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/giordana-stumm-13786133a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      <a href="https://www.instagram.com/giordana_stumm/" target="_blank" title="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
+    <div class="card">
+      <h3>Backend</h3>
+      <ul>
+        <li>Python</li>
+        <li>Java</li>
+        <li>MySQL</li>
+        <li>POO</li>
+        <li>Lógica de Programação</li>
+      </ul>
     </div>
-  </section>
+    <div class="card">
+      <h3>Outros</h3>
+      <ul>
+        <li>GitHub</li>
+        <li>Manutenção de Hardware</li>
+        <li>Redes de Computadores</li>
+        <li>Inglês (B2)</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-  <footer class="footer-glow">
-    <p>
-      <span class="icon"><i class="fas fa-code"></i></span>
-      Feito com 💖 por Giordana - Dev Full Stack
-      <span class="footer-icons">
-        <a href="https://wa.me/555499527071" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://github.com/gio0000" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/giordana-stumm-13786133a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-      </span>
-    </p>
-  </footer>
+<!-- Contato -->
+<section id="contact" class="py-20 text-center">
+  <h2 class="text-4xl font-bold mb-8 orbitron">CONTATO</h2>
+  <p class="mb-8 max-w-xl mx-auto text-pink-300">Vamos nos conectar! Escolha sua plataforma favorita:</p>
+  <div class="flex justify-center gap-12 text-5xl text-pink-400">
+    <a href="https://wa.me/554999527071" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer" class="hover:text-pink-600 transition">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://www.instagram.com/gio__tech" aria-label="Instagram" target="_blank" rel="noopener noreferrer" class="hover:text-pink-600 transition">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/giordana-stumm-13786133a" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" class="hover:text-pink-600 transition">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/gio0000" aria-label="GitHub" target="_blank" rel="noopener noreferrer" class="hover:text-pink-600 transition">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="mailto:giordanastumm7@gmail.com" aria-label="Email" class="hover:text-pink-600 transition">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+</section>
 
-  <script>
-    const toggle = document.getElementById('menu-toggle');
-    const nav = document.getElementById('nav-menu');
+<script>
+  // Toggle mobile menu (opcional, pode expandir)
+  const btn = document.querySelector('nav button.md\\:hidden');
+  const menu = document.querySelector('nav .hidden.md\\:flex');
+  btn?.addEventListener('click', () => {
+    if(menu.style.display === 'flex') menu.style.display = 'none';
+    else menu.style.display = 'flex';
+  });
+</script>
 
-    toggle.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
-  </script>
-  <script>
-    ScrollReveal({
-      distance: '50px',
-      duration: 1000,
-      easing: 'ease-out',
-      reset: false, // se quiser que o efeito repita sempre que der scroll, muda pra true
-    });
-  
-    ScrollReveal().reveal('.hero-left', { origin: 'left' });
-    ScrollReveal().reveal('.hero-right', { origin: 'right' });
-  
-    ScrollReveal().reveal('#sobre h3', { origin: 'top', delay: 200 });
-    ScrollReveal().reveal('#sobre p', { origin: 'bottom', delay: 400 });
-    ScrollReveal().reveal('#sobre img', { origin: 'left', delay: 300 });
-  
-    ScrollReveal().reveal('.fullstack-conteudo', { origin: 'bottom', delay: 200 });
-    ScrollReveal().reveal('#skills h3', { origin: 'top', delay: 100 });
-    ScrollReveal().reveal('#skills .card', { interval: 200 });
-  
-    ScrollReveal().reveal('#servicos h3', { origin: 'top', delay: 100 });
-    ScrollReveal().reveal('#servicos .card', { interval: 200 });
-  
-    ScrollReveal().reveal('#projetos h3', { origin: 'top', delay: 100 });
-    ScrollReveal().reveal('.projeto-card', { interval: 200 });
-  
-    ScrollReveal().reveal('#contato h3', { origin: 'top', delay: 100 });
-    ScrollReveal().reveal('.contact-icons', { origin: 'bottom', delay: 300 });
-  
-    ScrollReveal().reveal('footer', { origin: 'bottom', delay: 500 });
-  </script>
-  
 </body>
 </html>
