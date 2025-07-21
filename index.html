@@ -8,216 +8,282 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 <style>
-    body {
-        font-family: 'Space Mono', monospace;
-        background: #0a001f;
-        background-image: radial-gradient(circle at top left, #ff77a9, transparent 40%),
-                          radial-gradient(circle at bottom right, #ff4da6, transparent 40%);
-        color: #f8c1de;
-        overflow-x: hidden;
+  body {
+    font-family: 'Space Mono', monospace;
+    background: #0a001f;
+    background-image: radial-gradient(circle at top left, #ff77a9, transparent 40%),
+                      radial-gradient(circle at bottom right, #ff4da6, transparent 40%);
+    color: #f8c1de;
+    overflow-x: hidden;
+  }
+  .orbitron {
+    font-family: 'Orbitron', sans-serif;
+  }
+  /* Navegação */
+  nav {
+    backdrop-filter: blur(12px);
+    background: rgba(20, 0, 30, 0.7);
+    border-bottom: 1px solid #ff4da6;
+    z-index: 50;
+  }
+  nav a {
+    color: #f8c1de;
+    transition: color 0.3s ease;
+    font-family: 'Space Mono', monospace;
+  }
+  nav a:hover {
+    color: #ff77a9;
+  }
+  nav .logo-text {
+    color: #ff4da6;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  nav button svg {
+    stroke: #f8c1de;
+  }
+  /* Estrelas */
+  .star {
+    position: absolute;
+    background-color: #ff77a9;
+    border-radius: 50%;
+    animation: twinkle 4s infinite ease-in-out;
+  }
+  @keyframes twinkle {
+    0%, 100% {opacity: 0.3;}
+    50% {opacity: 1;}
+  }
+  /* Hero */
+  .hero-section h1 .text-gradient {
+    background: linear-gradient(90deg, #ff77a9 0%, #ff4da6 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 700;
+  }
+  .hero-section p {
+    color: #ffb6d9;
+    font-size: 1.125rem;
+  }
+  .btn-primary {
+    background: linear-gradient(45deg, #ff4da6, #ff77a9);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+  }
+  .btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 77, 166, 0.6);
+  }
+  .btn-secondary {
+    border: 2px solid #ff77a9;
+    color: #ff77a9;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+  }
+  .btn-secondary:hover {
+    background: #ff77a9;
+    color: white;
+    box-shadow: 0 8px 20px rgba(255, 77, 166, 0.6);
+  }
+  /* Cards dos projetos e serviços */
+  .card {
+    background: rgba(255, 77, 166, 0.12);
+    border: 1px solid #ff4da6;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    color: #ffd6e8;
+    box-shadow: 0 0 15px rgba(255, 77, 166, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 77, 166, 0.6);
+  }
+  .card h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    color: #ff4da6;
+    margin-bottom: 0.5rem;
+  }
+  .card p {
+    color: #ffc9e3;
+  }
+  .card a {
+    color: #ff77a9;
+    font-weight: 600;
+    text-decoration: none;
+    display: block;
+    margin-top: 0.8rem;
+    text-align: center;
+    transition: color 0.3s ease;
+  }
+  .card a:hover {
+    color: #ffb6d9;
+    text-decoration: underline;
+  }
+  /* Imagens circulares */
+  .card img {
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 77, 166, 0.7);
+    margin-bottom: 1rem;
+  }
+  /* Seções */
+  section {
+    padding: 4rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  /* Iluminação habilidades e experiência */
+  #skills, #experience {
+    background: #1a002e;
+    box-shadow: 0 0 40px 4px rgba(255, 77, 166, 0.7);
+    border-radius: 1rem;
+    color: #ffe6f0;
+  }
+  #skills h2, #experience h2 {
+    color: #ff4da6;
+    text-shadow: 0 0 10px #ff77a9;
+  }
+  /* Listas */
+  ul {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+    color: #fbb6ce;
+  }
+  ul li {
+    margin-bottom: 0.4rem;
+  }
+  /* Contato */
+  #contact i {
+    color: #ff77a9;
+    transition: color 0.3s ease;
+  }
+  #contact a:hover i {
+    color: #ffb6d9;
+    transform: scale(1.15);
+  }
+  /* Responsive ajustes */
+  @media (max-width: 768px) {
+    nav .hidden.md\\:flex {
+      display: none !important;
     }
-    .orbitron {
-        font-family: 'Orbitron', sans-serif;
-    }
-    /* Navegação */
-    nav {
-        backdrop-filter: blur(12px);
-        background: rgba(20, 0, 30, 0.7);
-        border-bottom: 1px solid #ff4da6;
-        z-index: 50;
-    }
-    nav a {
-        color: #f8c1de;
-        transition: color 0.3s ease;
-        font-family: 'Space Mono', monospace;
-    }
-    nav a:hover {
-        color: #ff77a9;
-    }
-    nav .logo-text {
-        color: #ff4da6;
-        font-weight: 700;
-        font-size: 1.5rem;
-    }
-    nav button svg {
-        stroke: #f8c1de;
-    }
-    /* Estrelas */
-    .star {
-        position: absolute;
-        background-color: #ff77a9;
-        border-radius: 50%;
-        animation: twinkle 4s infinite ease-in-out;
-    }
-    @keyframes twinkle {
-        0%, 100% {opacity: 0.3;}
-        50% {opacity: 1;}
-    }
-    /* Hero */
-    .hero-section h1 .text-gradient {
-        background: linear-gradient(90deg, #ff77a9 0%, #ff4da6 100%);
-        -webkit-background-clip: text;
-        color: transparent;
-        font-weight: 700;
-    }
-    .hero-section p {
-        color: #ffb6d9;
-        font-size: 1.125rem;
-    }
-    .btn-primary {
-        background: linear-gradient(45deg, #ff4da6, #ff77a9);
-        color: white;
-        font-weight: 600;
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.75rem;
-        transition: all 0.3s ease;
-        display: inline-block;
-        text-align: center;
-    }
-    .btn-primary:hover {
-        filter: brightness(1.1);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(255, 77, 166, 0.6);
-    }
-    .btn-secondary {
-        border: 2px solid #ff77a9;
-        color: #ff77a9;
-        font-weight: 600;
-        padding: 0.75rem 1.5rem;
-        border-radius: 0.75rem;
-        transition: all 0.3s ease;
-        display: inline-block;
-        text-align: center;
-    }
-    .btn-secondary:hover {
-        background: #ff77a9;
-        color: white;
-        box-shadow: 0 8px 20px rgba(255, 77, 166, 0.6);
-    }
-    /* Cards dos projetos e serviços */
-    .card {
-        background: rgba(255, 77, 166, 0.12);
-        border: 1px solid #ff4da6;
-        border-radius: 1rem;
-        padding: 1.5rem;
-        color: #ffd6e8;
-        box-shadow: 0 0 15px rgba(255, 77, 166, 0.3);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(255, 77, 166, 0.6);
-    }
-    .card h3 {
-        font-family: 'Orbitron', sans-serif;
-        font-weight: 700;
-        color: #ff4da6;
-        margin-bottom: 0.5rem;
-    }
-    .card p {
-        color: #ffc9e3;
-    }
-    .card a {
-        color: #ff77a9;
-        font-weight: 600;
-        text-decoration: none;
-        display: block;
-        margin-top: 0.8rem;
-        text-align: center;
-        transition: color 0.3s ease;
-    }
-    .card a:hover {
-        color: #ffb6d9;
-        text-decoration: underline;
-    }
-    /* Imagens circulares */
-    .card img {
-        border-radius: 50%;
-        box-shadow: 0 0 15px rgba(255, 77, 166, 0.7);
-        margin-bottom: 1rem;
-    }
-    /* Seções */
-    section {
-        padding: 4rem 1rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-    /* Iluminação habilidades e experiência */
-    #skills, #experience {
-        background: #1a002e;
-        box-shadow: 0 0 40px 4px rgba(255, 77, 166, 0.7);
-        border-radius: 1rem;
-        color: #ffe6f0;
-    }
-    #skills h2, #experience h2 {
-        color: #ff4da6;
-        text-shadow: 0 0 10px #ff77a9;
-    }
-    /* Listas */
-    ul {
-        list-style-type: disc;
-        padding-left: 1.25rem;
-        color: #fbb6ce;
-    }
-    ul li {
-        margin-bottom: 0.4rem;
-    }
-    /* Contato */
-    #contact i {
-        color: #ff77a9;
-        transition: color 0.3s ease;
-    }
-    #contact a:hover i {
-        color: #ffb6d9;
-        transform: scale(1.15);
-    }
-    /* Responsive ajustes */
-    @media (max-width: 768px) {
-        nav .hidden.md\\:flex {
-            display: none !important;
-        }
-    }
+  }
 
-    /* Globo rosa neon animado */
-.planet {
+  /* Globo rosa neon animado */
+  .planet {
     animation: rotate 20s linear infinite;
     filter: drop-shadow(0 0 10px #ff4da6);
     max-width: 100%;
-}
-
-.orbit {
+  }
+  .orbit {
     stroke-dasharray: 502;
     stroke-dashoffset: 502;
     animation: dash 5s linear infinite;
     opacity: 0.6;
-}
-
-@keyframes rotate {
+  }
+  @keyframes rotate {
     from { transform: rotate(0deg);}
     to { transform: rotate(360deg);}
-}
-
-@keyframes dash {
+  }
+  @keyframes dash {
     0% { stroke-dashoffset: 502; }
     50% { stroke-dashoffset: 251; opacity: 1;}
     100% { stroke-dashoffset: 0; opacity: 0.6;}
+  }
+
+  /* EFEITOS DE SCROLL PARA TODAS AS SEÇÕES */
+  .scroll-effect {
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: transform, opacity;
+  }
+  .scroll-effect.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  /* EFEITOS ESPECIAIS PARA ELEMENTOS */
+  /* Títulos aparecem com fade e zoom */
+  .scroll-fade-zoom {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: transform, opacity;
+  }
+  .scroll-fade-zoom.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Cards aparecem deslizando da esquerda */
+  .scroll-slide-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: transform, opacity;
+  }
+  .scroll-slide-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Cards aparecem deslizando da direita */
+  .scroll-slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: transform, opacity;
+  }
+  .scroll-slide-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Botões pulsam levemente */
+  .btn-primary, .btn-secondary {
+    animation: pulse 4s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  #stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: transparent;
+  display: block;
 }
+
+
+
 
 </style>
 </head>
 <body>
 
 <!-- Estrelas no fundo -->
-<div id="stars-container"></div>
+<canvas id="stars"></canvas>
 
 <!-- Navegação -->
-<nav class="fixed w-full z-50">
+<nav class="fixed w-full z-50 scroll-effect scroll-fade-zoom">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16 items-center">
       <div class="flex items-center space-x-2">
-        <div class="h-10 w-10 rounded-full overflow-hidden border border-pink-400">
-          
-        </div>
         <span class="logo-text orbitron">Dev gio</span>
       </div>
       <div class="hidden md:flex space-x-8">
@@ -234,11 +300,12 @@
     </div>
   </div>
 </nav>
+
 <!-- Hero Section -->
-<section id="home" class="hero-section pt-40 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+<section id="home" class="hero-section pt-40 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-effect scroll-fade-zoom">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
     <!-- Texto da esquerda -->
-    <div class="space-y-6">
+    <div class="space-y-6 scroll-slide-left">
       <h1 class="text-5xl md:text-7xl font-bold leading-tight">
         <span class="text-gradient orbitron">Desenvolvedora</span><br />
         <span class="text-white orbitron">Explorando o Cosmos Digital</span>
@@ -253,15 +320,14 @@
     </div>
 
     <!-- Imagem da direita -->
-    <div class="flex justify-center md:justify-end">
-      <img src="Design sem nome (1).png"Imagem de desenvolvedora galáctica" class="w-full max-w-sm rounded-2xl shadow-lg" />
+    <div class="flex justify-center md:justify-end scroll-slide-right">
+      <img src="Design sem nome (1).png" alt="Imagem de desenvolvedora galáctica" class="w-full max-w-sm rounded-2xl shadow-lg" />
     </div>
   </div>
 </section>
 
-
 <!-- Sobre Giordana -->
-<section id="about" class="py-20 max-w-4xl mx-auto px-4 text-center">
+<section id="about" class="py-20 max-w-4xl mx-auto px-4 text-center scroll-effect scroll-fade-zoom">
   <h2 class="text-5xl font-bold mb-6 orbitron text-gradient">SOBRE GIODRANA</h2>
   <p class="text-lg text-pink-300 max-w-3xl mx-auto">
     Desenvolvedora Full Stack e Técnica em Informática. Olá! Meu nome é Giordana. Tenho experiência no desenvolvimento de interfaces modernas com HTML, CSS, JavaScript e Qt Designer, e também trabalho no backend com Python, Java, MySQL e Programação Orientada a Objetos (POO). Além disso, atuo com manutenção de hardware, o que amplia minha atuação em projetos variados.
@@ -269,40 +335,40 @@
 </section>
 
 <!-- Projetos -->
-<section id="projects">
+<section id="projects" class="scroll-effect scroll-fade-zoom">
   <h2 class="text-4xl font-bold mb-12 text-center orbitron">PROJETOS</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 max-w-7xl mx-auto">
     <!-- Virtual Pedalboard -->
-    <div class="card text-center">
+    <div class="card text-center scroll-slide-left">
       <img src="Salleedesign-Music-Guitar-stratocaster-black.256.png" alt="Pedaleira Virtual" class="w-32 h-32 mx-auto" />
       <h3>Pedaleira Virtual para Guitarras</h3>
       <p>Simulação de pedais para guitarra usando Python + Qt Designer</p>
       <a href="https://github.com/gio0000/Pedaleira-para-guitarra" target="_blank" rel="noopener noreferrer">🔗 Ver no GitHub</a>
     </div>
     <!-- Guitar Sales Site -->
-    <div class="card text-center">
+    <div class="card text-center scroll-fade-zoom">
       <img src="AI.png" alt="Site de Venda de Guitarras" class="w-32 h-32 mx-auto" />
       <h3>Site de Venda de Guitarras</h3>
       <p>Projeto web moderno com foco em e-commerce para guitarristas</p>
       <a href="https://github.com/gio0000/ecommerce-guitarras" target="_blank" rel="noopener noreferrer">🔗 Ver no GitHub</a>
     </div>
     <!-- Agronomy Site -->
-    <div class="card text-center">
+    <div class="card text-center scroll-slide-right">
       <img src="Microsoft-Fluentui-Emoji-3d-Potted-Plant-3d.512.png" alt="Site de Agronomia" class="w-32 h-32 mx-auto" />
       <h3>Site de Agronomia</h3>
       <p>Plataforma voltada para serviços e conteúdos agrícolas</p>
       <a href="https://github.com/gio0000/site-agroneg-cios" target="_blank" rel="noopener noreferrer">🔗 Ver no GitHub</a>
     </div>
     <!-- Manutenção de Computadores -->
-    <div class="card text-center">
+    <div class="card text-center scroll-slide-left">
       <img src="Prasilarts-Claire-Monitor-06-Computer-Windows-7.512.png" alt="Manutenção de Computadores" class="w-32 h-32 mx-auto" />
       <h3>Manutenção de Computadores</h3>
       <p>Projeto voltado para suporte técnico e manutenção preventiva</p>
       <a href="https://www.linkedin.com/posts/giordana-stumm-13786133a_projeto-integrador-activity-7335079937172779008-zHq5?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFUzLXsBEgwMoF5ADCCX3xxZHtSqtf4yuQ0" target="_blank" rel="noopener noreferrer">🔗 Ver no LinkedIn</a>
     </div>
     <!-- Portfólio Atual -->
-    <div class="card text-center">
-      <img src="Aha-Soft-Space-Galaxy.256.png" alt="Portfólio Atual" class="w-32 h-32 mx-auto" />
+    <div class="card text-center scroll-slide-right">
+      <img src="Gartoon-Team-Gartoon-Action-Help-about-star-fav.512.png" alt="Portfólio Atual" class="w-32 h-32 mx-auto" />
       <h3>Este Portfólio</h3>
       <p>Portfólio desenvolvido para mostrar meus projetos</p>
     </div>
@@ -310,22 +376,22 @@
 </section>
 
 <!-- Serviços -->
-<section id="services" class="py-20">
+<section id="services" class="py-20 scroll-effect scroll-fade-zoom">
   <h2 class="text-4xl font-bold mb-8 text-center orbitron">SERVIÇOS CONTRATÁVEIS</h2>
   <p class="text-lg text-center max-w-3xl mx-auto mb-12 text-pink-300">
     Ofereço uma variedade de serviços para atender às suas necessidades tecnológicas.
   </p>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 max-w-7xl mx-auto">
-    <div class="card">
+    <div class="card scroll-slide-left">
       <h3>Criação de Sites Pessoais</h3>
       <p>
         Crio sites personalizados para pequenas empresas e empreendedores que buscam presença online com visual profissional. Cada site é feito pensando nas necessidades do cliente, com design moderno, funcional e alinhado à identidade da marca. Os sites têm design responsivo, funcionando bem em celulares, tablets e computadores, oferecendo ótima navegação em qualquer tela. Perfeito para apresentar serviços, divulgar sua marca ou vender produtos de forma simples e bonita.
       </p>
     </div>
-    <div class="card">
+    <div class="card scroll-slide-right">
       <h3>Manutenção de Computadores</h3>
       <p>
-        Serviços de manutenção de hardware, incluindo formatação, upgrade, instalação de softwares, diagnósticos e backup de dados.
+        Serviços de manutenção de hardware, incluindo formatação, upgrade e  instalação de softwares.
       </p>
       <ul>
         <li>Formatação e instalação de sistemas operacionais</li>
@@ -339,68 +405,105 @@
         <li>Escolha de peças para montagem</li>
       </ul>
     </div>
-    <div class="card">
-      <h3>Criação de Apps e Portfólios</h3>
+    <div class="card scroll-slide-left">
+      <h3>Desenvolvimento Full Stack</h3>
       <p>
-        Desenvolvo aplicativos e portfólios sob medida para quem quer se destacar com tecnologia e profissionalismo. Cada projeto é pensado para atender às necessidades do cliente, com visual moderno, fácil de usar e adaptado para diferentes dispositivos. Seja um app simples para facilitar processos ou um portfólio profissional para mostrar seus trabalhos, entrego soluções completas com foco em praticidade, identidade visual e funcionalidade.
+        Desenvolvimento integral de sistemas web sofisticados e personalizados, utilizando tecnologias robustas como Python e Java para a lógica de negócio, combinadas com HTML e CSS para interfaces modernas e responsivas, além da integração eficiente com bancos de dados relacionais. Minha abordagem visa criar soluções digitais sob medida, que atendem às necessidades específicas de cada cliente, promovendo desempenho, escalabilidade e excelente experiência do usuário.
       </p>
     </div>
   </div>
 </section>
 
+<!-- Habilidades com ícones -->
+<section id="skills" class="scroll-effect scroll-fade-zoom text-center py-12">
+  <h2 class="text-4xl font-bold mb-8 text-pink-400 orbitron">HABILIDADES</h2>
+  
+  <div class="flex flex-wrap justify-center items-center gap-6 text-pink-200">
+    <!-- HTML -->
+    <div class="flex flex-col items-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" width="100">
+      <span class="mt-2">HTML5</span>
+    </div>
+
+    <!-- CSS -->
+    <div class="flex flex-col items-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" width="100">
+      <span class="mt-2">CSS3</span>
+    </div>
+
+    <!-- JavaScript -->
+    <div class="flex flex-col items-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" width="100">
+      <span class="mt-2">JavaScript</span>
+    </div>
+
+    <!-- Python -->
+    <div class="flex flex-col items-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" width="100">
+      <span class="mt-2">Python</span>
+    </div>
+
+    <!-- Java -->
+    <div class="flex flex-col items-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" width="100">
+      <span class="mt-2">Java</span>
+    </div>
+
+    <!-- MySQL -->
+    <div class="flex flex-col items-center">
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" width="100">
+      <span class="mt-2">MySQL</span>
+    </div>
+
+    <!-- Qt Designer -->
+    <div class="flex flex-col items-center">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Qt_logo_2016.svg" alt="Qt Designer" width="100">
+      <span class="mt-2">Qt Designer</span>
+    </div>
+
+    <!-- Hardware -->
+    <div class="flex flex-col items-center">
+<img src="https://icons.iconarchive.com/icons/visualpharm/hardware/256/motherboard-icon.png" alt="Ícone de Placa-Mãe" width="100">
+
+
+
+      <span class="mt-2">Montagem de Hardware</span>
+    </div>
+
+    <!-- POO -->
+<div class="flex flex-col items-center">
+  <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Ícone de PC" width="100">
+
+  <span class="mt-2">POO</span>
+</div>
+
+  </div>
+</section>
+
+
+  </ul>
+</section>
+
 <!-- Experiência -->
-<section id="experience" class="py-20 max-w-5xl mx-auto px-4 text-center">
-  <h2 class="text-4xl font-bold mb-6 orbitron">EXPERIÊNCIA</h2>
-  <p class="text-lg text-pink-300 max-w-3xl mx-auto mb-8">
-    Trabalhei em diversos projetos, desenvolvendo tanto o frontend quanto o backend, utilizando tecnologias como HTML, CSS, MySQL, Flask, Python e Java.
+<section id="experience" class="scroll-effect scroll-fade-zoom">
+  <h2 class="text-4xl font-bold mb-8 text-center orbitron">EXPERIÊNCIA</h2>
+  <p class="max-w-3xl mx-auto text-pink-300 text-center">
+     Trabalhei em diversos projetos, desenvolvendo tanto o frontend quanto o backend, utilizando tecnologias como HTML, CSS, MySQL, Flask, Python e Java.
   </p>
 </section>
 
 <!-- Certificações -->
-<section id="certificates" class="py-20 max-w-5xl mx-auto px-4 text-center">
-  <h2 class="text-4xl font-bold mb-6 orbitron">CERTIFICAÇÕES</h2>
-  <p class="text-lg text-pink-300 max-w-3xl mx-auto mb-8">
-    Ao longo da minha jornada, obtive formações importantes: Técnico em Informática, cursos em programação (Java, lógica, Python), Excel Avançado, Inglês B2 e manutenção de hardware.
-  </p>
-</section>
-
-<!-- Habilidades -->
-<section id="skills" class="py-20 max-w-7xl mx-auto px-4">
-  <h2 class="text-4xl font-bold mb-8 text-center orbitron">HABILIDADES</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <div class="card">
-      <h3>Frontend</h3>
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>Qt Designer</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Backend</h3>
-      <ul>
-        <li>Python</li>
-        <li>Java</li>
-        <li>MySQL</li>
-        <li>POO</li>
-        <li>Lógica de Programação</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Outros</h3>
-      <ul>
-        <li>GitHub</li>
-        <li>Manutenção de Hardware</li>
-        <li>Redes de Computadores</li>
-        <li>Inglês (B2)</li>
-      </ul>
-    </div>
-  </div>
+<section id="certificates" class="scroll-effect scroll-fade-zoom">
+  <h2 class="text-4xl font-bold mb-8 text-center orbitron">CERTIFICAÇÕES</h2>
+  <ul class="max-w-xl mx-auto text-pink-300 space-y-2">
+    <ul> <li>Curso Técnico em Informática – Senac Carazinho, com foco em desenvolvimento de software e manutenção de hardware;</li> <li>Cursos especializados em Java e Lógica de Programação, aprofundando fundamentos e práticas avançadas de programação orientada a objetos;</li> <li>Curso completo de Inglês, atualmente no nível B2, que assegura comunicação fluente e leitura técnica;</li> <li>Curso de Excel, com domínio de funcionalidades avançadas para análise e organização de dados.</li> </ul>
+  </ul>
 </section>
 
 <!-- Contato -->
-<section id="contact" class="py-20 text-center">
+<section id="contact" class="py-20 text-center scroll-effect scroll-fade-zoom">
+  <!-- Contato -->
+<section id="contact" class="py-20 text-center scroll-effect scroll-fade-zoom"></section>
   <h2 class="text-4xl font-bold mb-8 orbitron">CONTATO</h2>
   <p class="mb-8 max-w-xl mx-auto text-pink-300">Vamos nos conectar! Escolha sua plataforma favorita:</p>
   <div class="flex justify-center gap-12 text-5xl text-pink-400">
@@ -422,15 +525,127 @@
   </div>
 </section>
 
+<!-- Script de Scroll Reveal -->
 <script>
-  // Toggle mobile menu (opcional, pode expandir)
-  const btn = document.querySelector('nav button.md\\:hidden');
-  const menu = document.querySelector('nav .hidden.md\\:flex');
-  btn?.addEventListener('click', () => {
-    if(menu.style.display === 'flex') menu.style.display = 'none';
-    else menu.style.display = 'flex';
+  document.addEventListener('DOMContentLoaded', function () {
+    const scrollElements = document.querySelectorAll('.scroll-effect, .scroll-fade-zoom, .scroll-slide-left, .scroll-slide-right');
+
+    const elementInView = (el, offset = 100) => {
+      const elementTop = el.getBoundingClientRect().top;
+      return elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset;
+    };
+
+    const displayScrollElement = (element) => {
+      element.classList.add('visible');
+    };
+
+    const hideScrollElement = (element) => {
+      element.classList.remove('visible');
+    };
+
+    const handleScrollAnimation = () => {
+      scrollElements.forEach((el) => {
+        if (elementInView(el, 100)) {
+          displayScrollElement(el);
+        } else {
+          hideScrollElement(el);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', () => {
+      handleScrollAnimation();
+    });
+
+    handleScrollAnimation();
   });
+
+  
+  const canvas = document.getElementById('stars');
+  const ctx = canvas.getContext('2d');
+
+  let width, height;
+  let stars = [];
+
+  function init() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    stars = [];
+    for(let i = 0; i < 3500; i++) {
+      stars.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 1.6,
+        alpha: Math.random(),
+        delta: 0.01 + Math.random() * 0.02
+      });
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    stars.forEach(star => {
+      star.alpha += star.delta;
+      if(star.alpha <= 0 || star.alpha >= 1) star.delta = -star.delta;
+
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 119, 169, ${star.alpha})`; // rosa neon
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', init);
+
+  init();
+  animate();
 </script>
+
+</script>
+<!-- Footer -->
+<footer class="footer-section px-6 py-8 bg-[#1a002e] text-pink-300 text-center">
+  <div class="max-w-7xl mx-auto">
+    <p class="mb-4 footer-text">
+      Obrigada pela visita! Desejo que seu caminho digital seja iluminado por muitas conquistas e código de qualidade.
+      
+      
+    </p>
+    <p class="footer-subtext">
+      Desenvolvido com ❤️ por Giordana.dev
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer-section {
+    box-shadow: 0 -4px 15px rgba(255, 77, 166, 0.4);
+    backdrop-filter: blur(10px);
+  }
+  .footer-text {
+    font-family: 'Space Mono', monospace;
+    font-weight: 600;
+    font-size: 1.125rem;
+    text-shadow: 0 0 10px #ff4da6, 0 0 20px #ff77a9;
+    margin-bottom: 0.5rem;
+    transition: color 0.4s ease;
+  }
+  .footer-text:hover {
+    color: #ff77a9;
+    cursor: default;
+  }
+  .footer-subtext {
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #f8c1de;
+    text-shadow: 0 0 6px #ff4da6;
+  }
+</style>
+
 
 </body>
 </html>
